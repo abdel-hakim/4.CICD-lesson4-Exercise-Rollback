@@ -19,13 +19,11 @@ jobs:
             aws cloudformation deploy \
               --template-file template.yml \
               --stack-name prod-${CIRCLE_WORKFLOW_ID}
-
-
-  smoke_test:
-    docker:
-      - image: amazon/aws_cli
-    steps:
-      - checkout
+#  smoke_test:
+    # docker:
+    #   - image: amazon/aws_cli
+    # steps:
+    #   - checkout
       - run:
           name: simulate error
           command:  |
@@ -35,9 +33,6 @@ jobs:
 workflows:
   jobs:
     - create_infrastructure
-    - smoke_test:
-        requires:
-          - create_infrastructure
 
 ## What Do I Need for This Job?
 #1- A reusable command to handle the work of destroying the green infrastructure.
