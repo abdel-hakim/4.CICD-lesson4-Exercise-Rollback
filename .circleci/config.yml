@@ -31,8 +31,9 @@ jobs:
       - destroy_environment
           when: on_fail
 workflows:
-  jobs:
-    - create_infrastructure
+  myworkflow:
+    jobs:
+      - create_infrastructure
 
 ## What Do I Need for This Job?
 #1- A reusable command to handle the work of destroying the green infrastructure.
